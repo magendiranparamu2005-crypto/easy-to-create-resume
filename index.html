@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResuCraft — Live Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-navy">
+  <!-- Top Application Bar -->
+  <header class="app-bar no-print">
+    <div class="brand">
+      <span class="logo-icon">📄</span>
+      <h2>Resu<strong>Craft</strong></h2>
+    </div>
+
+    <div class="actions">
+      <!-- Theme Switcher -->
+      <div class="theme-selector">
+        <label>Theme:</label>
+        <button class="color-dot navy active" data-theme="theme-navy" title="Modern Navy"></button>
+        <button class="color-dot slate" data-theme="theme-slate" title="Executive Slate"></button>
+        <button class="color-dot emerald" data-theme="theme-emerald" title="Emerald Growth"></button>
+      </div>
+
+      <button id="loadSampleBtn" class="btn btn-secondary">Load Sample</button>
+      <button id="clearBtn" class="btn btn-outline">Clear</button>
+      <button id="printBtn" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        Print / PDF
+      </button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <!-- LEFT PANE: Form Editor -->
+    <aside class="editor-pane no-print">
+      <!-- Personal Info -->
+      <section class="form-section">
+        <h3>Personal Details</h3>
+        <div class="input-grid">
+          <input type="text" id="inFullName" placeholder="Full Name">
+          <input type="text" id="inTitle" placeholder="Professional Title (e.g. Full Stack Developer)">
+          <input type="email" id="inEmail" placeholder="Email Address">
+          <input type="text" id="inPhone" placeholder="Phone Number">
+          <input type="text" id="inLocation" placeholder="Location (e.g. New York, USA)">
+          <input type="text" id="inWebsite" placeholder="GitHub / Portfolio URL">
+        </div>
+        <textarea id="inSummary" rows="3" placeholder="Brief professional summary about your expertise and goals..."></textarea>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="form-section">
+        <div class="section-header">
+          <h3>Work Experience</h3>
+          <button id="addExpBtn" class="btn btn-sm">+ Add Job</button>
+        </div>
+        <div id="experienceContainer" class="dynamic-group"></div>
+      </section>
+
+      <!-- Education -->
+      <section class="form-section">
+        <div class="section-header">
+          <h3>Education</h3>
+          <button id="addEduBtn" class="btn btn-sm">+ Add Education</button>
+        </div>
+        <div id="educationContainer" class="dynamic-group"></div>
+      </section>
+
+      <!-- Skills -->
+      <section class="form-section">
+        <h3>Skills</h3>
+        <div class="skills-input-wrapper">
+          <input type="text" id="inSkill" placeholder="Type a skill and press Enter (e.g. JavaScript)">
+          <button id="addSkillBtn" class="btn btn-sm">Add</button>
+        </div>
+        <div id="skillsTagContainer" class="tags-container"></div>
+      </section>
+
+      <!-- Projects -->
+      <section class="form-section">
+        <div class="section-header">
+          <h3>Projects</h3>
+          <button id="addProjBtn" class="btn btn-sm">+ Add Project</button>
+        </div>
+        <div id="projectContainer" class="dynamic-group"></div>
+      </section>
+    </aside>
+
+    <!-- RIGHT PANE: Live A4 Preview Paper -->
+    <main class="preview-pane">
+      <div class="resume-paper" id="resumePaper">
+        <!-- Header -->
+        <header class="resume-header">
+          <h1 id="outFullName">Your Name</h1>
+          <h2 id="outTitle">Professional Title</h2>
+          <div class="resume-contact" id="outContact">
+            <span id="outEmail">email@example.com</span>
+            <span id="outPhone">+1 234 567 890</span>
+            <span id="outLocation">City, Country</span>
+            <span id="outWebsite">github.com/profile</span>
+          </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="resume-block" id="blockSummary">
+          <h3 class="block-title">Professional Summary</h3>
+          <p id="outSummary" class="block-content">Summary goes here...</p>
+        </section>
+
+        <!-- Experience -->
+        <section class="resume-block" id="blockExperience">
+          <h3 class="block-title">Experience</h3>
+          <div id="outExperience" class="items-list"></div>
+        </section>
+
+        <!-- Projects -->
+        <section class="resume-block" id="blockProjects">
+          <h3 class="block-title">Key Projects</h3>
+          <div id="outProjects" class="items-list"></div>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-block" id="blockEducation">
+          <h3 class="block-title">Education</h3>
+          <div id="outEducation" class="items-list"></div>
+        </section>
+
+        <!-- Skills -->
+        <section class="resume-block" id="blockSkills">
+          <h3 class="block-title">Technical Skills</h3>
+          <div id="outSkills" class="resume-skills-list"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

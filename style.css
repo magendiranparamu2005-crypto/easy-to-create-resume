@@ -13,21 +13,21 @@
 
 /* 🎨 Color Themes */
 body.theme-navy {
-  --theme-primary: #1e3a8a;
-  --theme-accent: #2563eb;
-  --theme-light: #eff6ff;
+  --theme-primary: #000000;
+  --theme-accent: #000000;
+  --theme-light: #f3f4f6;
 }
 
 body.theme-slate {
-  --theme-primary: #1e293b;
-  --theme-accent: #475569;
+  --theme-primary: #000000;
+  --theme-accent: #000000;
   --theme-light: #f8fafc;
 }
 
 body.theme-emerald {
-  --theme-primary: #064e3b;
-  --theme-accent: #059669;
-  --theme-light: #ecfdf5;
+  --theme-primary: #000000;
+  --theme-accent: #000000;
+  --theme-light: #f3f4f6;
 }
 
 * {
@@ -203,7 +203,7 @@ body {
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #334155;
+  color: #0e0f0f;
 }
 
 .section-header {
@@ -332,14 +332,14 @@ textarea {
 
 /* Resume Document Typography */
 .resume-header {
-  border-bottom: 2px solid var(--theme-primary);
+  border-bottom: 2px solid #000000;
   padding-bottom: 16px;
 }
 
 .resume-header h1 {
   font-family: var(--font-serif);
   font-size: 2.1rem;
-  color: var(--theme-primary);
+  color: #000000;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -347,7 +347,7 @@ textarea {
 .resume-header h2 {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #000000;
   margin-top: 4px;
 }
 
@@ -357,7 +357,7 @@ textarea {
   gap: 16px;
   margin-top: 10px;
   font-size: 0.82rem;
-  color: #475569;
+  color: #000000;
 }
 
 .block-title {
@@ -365,8 +365,8 @@ textarea {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  color: var(--theme-primary);
-  border-bottom: 1px solid #e2e8f0;
+  color: #000000;
+  border-bottom: 1px solid #000000;
   padding-bottom: 4px;
   margin-bottom: 10px;
 }
@@ -374,7 +374,7 @@ textarea {
 .block-content {
   font-size: 0.88rem;
   line-height: 1.6;
-  color: #334155;
+  color: #000000;
 }
 
 .resume-item {
@@ -390,24 +390,24 @@ textarea {
 .item-role {
   font-weight: 700;
   font-size: 0.92rem;
-  color: #0f172a;
+  color: #000000;
 }
 
 .item-company {
-  color: var(--theme-accent);
+  color: #000000;
   font-weight: 600;
 }
 
 .item-date {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #000000;
   font-weight: 500;
 }
 
 .item-desc {
   font-size: 0.84rem;
   line-height: 1.5;
-  color: #475569;
+  color: #000000;
   margin-top: 4px;
 }
 
@@ -419,7 +419,7 @@ textarea {
 
 .resume-skill-pill {
   background: #f1f5f9;
-  color: #1e293b;
+  color: #000000;
   font-size: 0.8rem;
   font-weight: 600;
   padding: 4px 10px;

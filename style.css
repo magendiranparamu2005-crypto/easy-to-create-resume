@@ -1,4 +1,4 @@
-/* --- STRICT MONOCHROME / BLACK & WHITE DESIGN --- */
+/* --- STRICT MONOCHROME (BLACK & WHITE) & FULLY RESPONSIVE --- */
 :root {
   --bg-app: #f2f2f2;
   --bg-editor: #ffffff;
@@ -6,7 +6,6 @@
   --white: #ffffff;
   --border-gray: #d4d4d4;
   --border-light: #e5e5e5;
-  --text-editor: #171717;
   --font-serif: "Times New Roman", Times, "Computer Modern", Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -15,6 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -26,29 +26,31 @@ body {
   flex-direction: column;
 }
 
-/* --- TOP BAR --- */
+/* --- TOP HEADER BAR --- */
 .app-bar {
   background: var(--black);
   color: var(--white);
-  padding: 12px 24px;
+  padding: 10px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--black);
+  position: relative;
+  z-index: 101;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .brand-icon {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .brand h2 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: -0.2px;
 }
@@ -58,33 +60,33 @@ body {
 }
 
 .badge {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border: 1px solid var(--white);
-  padding: 2px 6px;
+  padding: 1px 5px;
   border-radius: 2px;
-  margin-left: 6px;
+  margin-left: 4px;
   font-weight: 600;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-/* Buttons */
+/* Header Buttons */
 .btn {
-  padding: 7px 16px;
+  padding: 6px 14px;
   border-radius: 4px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   border: 1px solid var(--white);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s ease;
   font-family: var(--font-sans);
 }
@@ -94,7 +96,7 @@ body {
   color: var(--black);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active {
   background: #e5e5e5;
   border-color: #e5e5e5;
 }
@@ -104,7 +106,7 @@ body {
   color: var(--white);
 }
 
-.btn-outline:hover {
+.btn-outline:hover, .btn-outline:active {
   background: var(--white);
   color: var(--black);
 }
@@ -120,25 +122,52 @@ body {
   font-weight: 600;
 }
 
-.btn-sm:hover {
+.btn-sm:hover, .btn-sm:active {
   background: #333333;
 }
 
-/* --- WORKSPACE SPLIT LAYOUT --- */
+/* --- MOBILE TAB NAVIGATION (VISIBLE ONLY ON MOBILE/TABLET <= 850px) --- */
+.mobile-tabs {
+  display: none;
+  background: var(--black);
+  border-top: 1px solid #333333;
+  border-bottom: 1px solid var(--border-gray);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  background: transparent;
+  color: #a3a3a3;
+  border: none;
+  padding: 12px 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.mobile-tab-btn.active {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom-color: var(--white);
+}
+
+/* --- WORKSPACE LAYOUT (DESKTOP) --- */
 .workspace {
   display: grid;
   grid-template-columns: 480px 1fr;
   flex: 1;
-  height: calc(100vh - 53px);
+  height: calc(100vh - 49px);
   overflow: hidden;
-}
-
-@media (max-width: 1024px) {
-  .workspace {
-    grid-template-columns: 1fr;
-    height: auto;
-    overflow: visible;
-  }
 }
 
 /* --- LEFT EDITOR PANE --- */
@@ -223,7 +252,7 @@ textarea {
   resize: vertical;
 }
 
-/* Dynamic Editor Items */
+/* Dynamic Cards in Editor */
 .dynamic-editor-group {
   display: flex;
   flex-direction: column;
@@ -247,7 +276,7 @@ textarea {
   right: 8px;
   background: transparent;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #777777;
   cursor: pointer;
@@ -297,7 +326,7 @@ textarea {
 .del-bullet-btn {
   background: transparent;
   border: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   color: #888888;
 }
@@ -313,6 +342,7 @@ textarea {
   overflow-y: auto;
   display: flex;
   justify-content: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* THE HARVARD / LATEX RESUME SHEET */
@@ -328,7 +358,7 @@ textarea {
   line-height: 1.25;
 }
 
-/* Resume Header */
+/* Header */
 .resume-header {
   text-align: center;
   margin-bottom: 12px;
@@ -362,7 +392,7 @@ textarea {
   color: var(--black);
 }
 
-/* Section formatting */
+/* Sections */
 .res-section {
   margin-top: 10px;
 }
@@ -381,7 +411,6 @@ textarea {
   margin-bottom: 6px;
 }
 
-/* Profile summary */
 .summary-text {
   font-size: 13.5px;
   text-align: justify;
@@ -389,7 +418,6 @@ textarea {
   color: var(--black);
 }
 
-/* Entries (Left Title, Right Date/Location) */
 .entries-group {
   display: flex;
   flex-direction: column;
@@ -434,7 +462,6 @@ textarea {
   font-style: italic;
 }
 
-/* Bullet list */
 .bullet-list {
   margin-top: 3px;
   padding-left: 20px;
@@ -472,7 +499,147 @@ textarea {
   font-weight: normal;
 }
 
-/* --- PRINT MEDIA: PIXEL-PERFECT ONE-PAGE A4 / LETTER PDF --- */
+/* =======================================================
+   MOBILE & TABLET RESPONSIVE STYLES (SCREEN <= 850px)
+   ======================================================= */
+@media screen and (max-width: 850px) {
+  /* Show mobile tab switcher */
+  .mobile-tabs {
+    display: flex;
+  }
+
+  /* Single column workspace */
+  .workspace {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Toggle between Editor and Preview based on active tab */
+  body.mobile-show-editor .editor-pane {
+    display: flex !important;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 16px 12px;
+  }
+
+  body.mobile-show-editor .preview-pane {
+    display: none !important;
+  }
+
+  body.mobile-show-preview .editor-pane {
+    display: none !important;
+  }
+
+  body.mobile-show-preview .preview-pane {
+    display: flex !important;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 14px 8px;
+    background: #ebebeb;
+  }
+
+  /* Prevent iOS automatic zoom when tapping input */
+  input, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Responsive Input Grids */
+  .input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: span 1;
+  }
+
+  /* Responsive Resume Paper on Mobile */
+  .resume-sheet {
+    padding: 24px 16px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    min-height: auto;
+    border-radius: 4px;
+    max-width: 100%;
+  }
+
+  .candidate-name {
+    font-size: 22px;
+  }
+
+  .contact-line, .links-line {
+    font-size: 12px;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .sep {
+    margin: 0 3px;
+  }
+
+  .summary-text {
+    font-size: 12.5px;
+    text-align: left;
+  }
+
+  /* Wrap rows so dates and locations don't blow out mobile width */
+  .entry-row {
+    flex-wrap: wrap;
+    gap: 2px;
+    font-size: 12.5px;
+  }
+
+  .entry-meta-bold, .entry-location-italic {
+    white-space: normal;
+    font-size: 12px;
+  }
+
+  .skills-table {
+    gap: 6px;
+    font-size: 12.5px;
+  }
+
+  .skill-line {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .bullet-list {
+    padding-left: 18px;
+  }
+
+  .bullet-list li {
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.35;
+  }
+}
+
+/* Very Small Mobile Screens (<= 400px) */
+@media screen and (max-width: 400px) {
+  .app-bar {
+    padding: 8px 10px;
+  }
+
+  .brand h2 {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .resume-sheet {
+    padding: 20px 12px;
+  }
+}
+
+/* =======================================================
+   PRINT STYLES: CLEAN PIXEL-PERFECT ONE-PAGE A4 / LETTER PDF
+   ======================================================= */
 @media print {
   @page {
     size: letter portrait;
@@ -485,7 +652,7 @@ textarea {
     margin: 0 !important;
   }
 
-  .no-print {
+  .no-print, .mobile-tabs {
     display: none !important;
   }
 
@@ -495,10 +662,14 @@ textarea {
     overflow: visible !important;
   }
 
+  .editor-pane {
+    display: none !important;
+  }
+
   .preview-pane {
+    display: block !important;
     background: #ffffff !important;
     padding: 0 !important;
-    display: block !important;
   }
 
   .resume-sheet {
@@ -507,7 +678,21 @@ textarea {
     padding: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
+    min-height: auto !important;
     page-break-after: avoid;
+  }
+
+  .entry-row {
+    flex-wrap: nowrap !important;
+  }
+
+  .entry-meta-bold, .entry-location-italic {
+    white-space: nowrap !important;
+  }
+
+  .skill-line {
+    display: grid !important;
+    grid-template-columns: 200px 1fr !important;
   }
 
   a {

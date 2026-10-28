@@ -307,7 +307,6 @@ function renderExperienceEditors() {
       </div>
     `;
 
-    // Remove Job
     card.querySelector(".card-remove-btn").addEventListener("click", () => {
       currentResume.experience.splice(idx, 1);
       renderExperienceEditors();
@@ -315,7 +314,6 @@ function renderExperienceEditors() {
       saveCurrentData();
     });
 
-    // Inputs sync
     card.querySelector(".exp-company").addEventListener("input", (e) => {
       currentResume.experience[idx].company = e.target.value;
       renderPreview();
@@ -337,7 +335,6 @@ function renderExperienceEditors() {
       saveCurrentData();
     });
 
-    // Bullets listeners
     card.querySelectorAll(".exp-bullet-input").forEach(input => {
       input.addEventListener("input", (e) => {
         const bIdx = parseInt(e.target.dataset.bidx, 10);
@@ -621,8 +618,31 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
 // Print Button
 document.getElementById("printBtn").addEventListener("click", () => {
+  // If on mobile preview, print directly
   window.print();
 });
+
+// --- MOBILE SEGMENTED TABS (EDIT FORM VS VIEW RESUME) ---
+const tabEditorBtn = document.getElementById("tabEditorBtn");
+const tabPreviewBtn = document.getElementById("tabPreviewBtn");
+
+if (tabEditorBtn && tabPreviewBtn) {
+  tabEditorBtn.addEventListener("click", () => {
+    tabEditorBtn.classList.add("active");
+    tabPreviewBtn.classList.remove("active");
+    document.body.classList.add("mobile-show-editor");
+    document.body.classList.remove("mobile-show-preview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  tabPreviewBtn.addEventListener("click", () => {
+    tabPreviewBtn.classList.add("active");
+    tabEditorBtn.classList.remove("active");
+    document.body.classList.add("mobile-show-preview");
+    document.body.classList.remove("mobile-show-editor");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 // Helper
 function escapeHtml(str) {

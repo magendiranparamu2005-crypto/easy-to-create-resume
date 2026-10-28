@@ -2,33 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Paramasivan M — Interactive Resume Builder</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="mobile-show-editor">
   <!-- Top Monochrome Bar -->
   <header class="app-bar no-print">
     <div class="brand">
       <span class="brand-icon">¦</span>
-      <h2>Resu<strong>Craft</strong> <span class="badge">Harvard B&amp;W</span></h2>
+      <h2>Resu<strong>Craft</strong> <span class="badge">B&amp;W</span></h2>
     </div>
     <div class="actions">
-      <button id="resetBtn" class="btn btn-outline" title="Reset to Paramasivan M original resume">Reset to Original</button>
-      <button id="printBtn" class="btn btn-primary">
+      <button id="resetBtn" class="btn btn-outline" title="Reset to original resume">Reset</button>
+      <button id="printBtn" class="btn btn-primary" title="Print or save as PDF">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-        Print / Download PDF
+        <span>PDF</span>
       </button>
     </div>
   </header>
 
-  <!-- Split Screen Workspace -->
-  <div class="workspace">
+  <!-- Mobile Segmented Tab Switcher (Visible only on Mobile & Tablets) -->
+  <div class="mobile-tabs no-print">
+    <button class="mobile-tab-btn active" id="tabEditorBtn">
+      <span>?? Edit Form</span>
+    </button>
+    <button class="mobile-tab-btn" id="tabPreviewBtn">
+      <span>??? View Resume</span>
+    </button>
+  </div>
+
+  <!-- Workspace: Side-by-Side on Desktop, Tabbed on Mobile -->
+  <div class="workspace" id="workspaceContainer">
     <!-- LEFT: Form Editor -->
-    <aside class="editor-pane no-print">
+    <aside class="editor-pane no-print" id="editorPane">
       <!-- Personal Details -->
       <section class="form-section">
         <h3>Contact &amp; Personal Info</h3>
@@ -123,7 +133,7 @@
     </aside>
 
     <!-- RIGHT: Live Document Preview (Exact B&W LaTeX Format) -->
-    <main class="preview-pane">
+    <main class="preview-pane" id="previewPane">
       <div class="resume-sheet" id="resumePaper">
         <!-- HEADER -->
         <header class="resume-header">

@@ -3,19 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Paramasivan M — Interactive Resume Builder</title>
+  <title>Paramasivan M — Resume &amp; CV Builder</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400&display=swap" rel="stylesheet">
 </head>
 <body class="mobile-show-editor">
   <!-- Top Monochrome Bar -->
   <header class="app-bar no-print">
     <div class="brand">
       <span class="brand-icon">¦</span>
-      <h2>Resu<strong>Craft</strong> <span class="badge">B&amp;W</span></h2>
+      <h2>Resu<strong>Craft</strong></h2>
     </div>
+
+    <!-- Template Selector -->
+    <div class="template-picker">
+      <label for="templateSelect">Template:</label>
+      <select id="templateSelect" class="template-dropdown">
+        <option value="template-harvard">1. Classic Harvard (LaTeX)</option>
+        <option value="template-modern">2. Modern 2-Column Sidebar</option>
+        <option value="template-minimal">3. Silicon Valley Minimal</option>
+      </select>
+    </div>
+
     <div class="actions">
       <button id="resetBtn" class="btn btn-outline" title="Reset to original resume">Reset</button>
       <button id="printBtn" class="btn btn-primary" title="Print or save as PDF">
@@ -25,7 +36,7 @@
     </div>
   </header>
 
-  <!-- Mobile Segmented Tab Switcher (Visible only on Mobile & Tablets) -->
+  <!-- Mobile Segmented Tab Switcher (Mobile/Tablets <= 850px) -->
   <div class="mobile-tabs no-print">
     <button class="mobile-tab-btn active" id="tabEditorBtn">
       <span>?? Edit Form</span>
@@ -132,9 +143,9 @@
       </section>
     </aside>
 
-    <!-- RIGHT: Live Document Preview (Exact B&W LaTeX Format) -->
+    <!-- RIGHT: Live Document Preview -->
     <main class="preview-pane" id="previewPane">
-      <div class="resume-sheet" id="resumePaper">
+      <div class="resume-sheet template-harvard" id="resumePaper">
         <!-- HEADER -->
         <header class="resume-header">
           <h1 class="candidate-name" id="outName">Paramasivan M</h1>
@@ -150,64 +161,73 @@
           </div>
         </header>
 
-        <!-- PROFILE SUMMARY -->
-        <section class="res-section" id="secSummary">
-          <h2 class="res-sec-title">Profile Summary</h2>
-          <hr class="res-divider">
-          <p class="summary-text" id="outSummary"></p>
-        </section>
+        <!-- CONTENT LAYOUT -->
+        <div class="resume-content-layout">
+          <!-- Main Content (Summary, Experience, Projects) -->
+          <div class="resume-col-main">
+            <!-- PROFILE SUMMARY -->
+            <section class="res-section" id="secSummary">
+              <h2 class="res-sec-title">Profile Summary</h2>
+              <hr class="res-divider">
+              <p class="summary-text" id="outSummary"></p>
+            </section>
 
-        <!-- EDUCATION -->
-        <section class="res-section" id="secEducation">
-          <h2 class="res-sec-title">Education</h2>
-          <hr class="res-divider">
-          <div id="outEducationList" class="entries-group"></div>
-        </section>
+            <!-- EXPERIENCE -->
+            <section class="res-section" id="secExperience">
+              <h2 class="res-sec-title">Experience</h2>
+              <hr class="res-divider">
+              <div id="outExperienceList" class="entries-group"></div>
+            </section>
 
-        <!-- TECHNICAL SKILLS -->
-        <section class="res-section" id="secSkills">
-          <h2 class="res-sec-title">Technical Skills</h2>
-          <hr class="res-divider">
-          <div class="skills-table">
-            <div class="skill-line">
-              <strong class="skill-name">Languages:</strong>
-              <span id="outSkillLanguages" class="skill-content"></span>
-            </div>
-            <div class="skill-line">
-              <strong class="skill-name">Frontend Technologies:</strong>
-              <span id="outSkillFrontend" class="skill-content"></span>
-            </div>
-            <div class="skill-line">
-              <strong class="skill-name">Developer Tools:</strong>
-              <span id="outSkillTools" class="skill-content"></span>
-            </div>
-            <div class="skill-line">
-              <strong class="skill-name">Technologies/Others:</strong>
-              <span id="outSkillOthers" class="skill-content"></span>
-            </div>
+            <!-- PROJECTS -->
+            <section class="res-section" id="secProjects">
+              <h2 class="res-sec-title">Projects</h2>
+              <hr class="res-divider">
+              <div id="outProjectsList" class="entries-group"></div>
+            </section>
           </div>
-        </section>
 
-        <!-- EXPERIENCE -->
-        <section class="res-section" id="secExperience">
-          <h2 class="res-sec-title">Experience</h2>
-          <hr class="res-divider">
-          <div id="outExperienceList" class="entries-group"></div>
-        </section>
+          <!-- Side Content (Education, Skills, Certifications) -->
+          <div class="resume-col-side">
+            <!-- EDUCATION -->
+            <section class="res-section" id="secEducation">
+              <h2 class="res-sec-title">Education</h2>
+              <hr class="res-divider">
+              <div id="outEducationList" class="entries-group"></div>
+            </section>
 
-        <!-- PROJECTS -->
-        <section class="res-section" id="secProjects">
-          <h2 class="res-sec-title">Projects</h2>
-          <hr class="res-divider">
-          <div id="outProjectsList" class="entries-group"></div>
-        </section>
+            <!-- TECHNICAL SKILLS -->
+            <section class="res-section" id="secSkills">
+              <h2 class="res-sec-title">Technical Skills</h2>
+              <hr class="res-divider">
+              <div class="skills-table">
+                <div class="skill-line">
+                  <strong class="skill-name">Languages:</strong>
+                  <span id="outSkillLanguages" class="skill-content"></span>
+                </div>
+                <div class="skill-line">
+                  <strong class="skill-name">Frontend Technologies:</strong>
+                  <span id="outSkillFrontend" class="skill-content"></span>
+                </div>
+                <div class="skill-line">
+                  <strong class="skill-name">Developer Tools:</strong>
+                  <span id="outSkillTools" class="skill-content"></span>
+                </div>
+                <div class="skill-line">
+                  <strong class="skill-name">Technologies/Others:</strong>
+                  <span id="outSkillOthers" class="skill-content"></span>
+                </div>
+              </div>
+            </section>
 
-        <!-- CERTIFICATIONS -->
-        <section class="res-section" id="secCertifications">
-          <h2 class="res-sec-title">Certifications</h2>
-          <hr class="res-divider">
-          <div id="outCertificationsList" class="entries-group"></div>
-        </section>
+            <!-- CERTIFICATIONS -->
+            <section class="res-section" id="secCertifications">
+              <h2 class="res-sec-title">Certifications</h2>
+              <hr class="res-divider">
+              <div id="outCertificationsList" class="entries-group"></div>
+            </section>
+          </div>
+        </div>
       </div>
     </main>
   </div>

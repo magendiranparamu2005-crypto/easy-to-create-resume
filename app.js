@@ -87,10 +87,10 @@ const DEFAULT_RESUME = {
   ]
 };
 
-// State Object (Deep Copy)
+// State Object
 let currentResume = JSON.parse(JSON.stringify(DEFAULT_RESUME));
 
-// Load from LocalStorage if available
+// Load from LocalStorage
 function loadSavedData() {
   const saved = localStorage.getItem("paramasivan_resume_data");
   if (saved) {
@@ -99,6 +99,15 @@ function loadSavedData() {
     } catch (e) {
       console.error("Could not parse saved resume data, using default", e);
     }
+  }
+
+  // Load Saved Template
+  const savedTemplate = localStorage.getItem("paramasivan_resume_template") || "template-harvard";
+  const templateSelect = document.getElementById("templateSelect");
+  const resumePaper = document.getElementById("resumePaper");
+  if (templateSelect && resumePaper) {
+    templateSelect.value = savedTemplate;
+    resumePaper.className = `resume-sheet ${savedTemplate}`;
   }
 }
 
@@ -523,7 +532,7 @@ function renderCertificationEditors() {
   });
 }
 
-// --- BASIC FIELD LISTENERS ---
+// Basic Fields
 document.getElementById("inName").addEventListener("input", (e) => {
   currentResume.name = e.target.value;
   renderPreview();
@@ -577,7 +586,7 @@ document.getElementById("inSkillOthers").addEventListener("input", (e) => {
   saveCurrentData();
 });
 
-// Add Section Buttons
+// Add Sections
 document.getElementById("addEduBtn").addEventListener("click", () => {
   currentResume.education.push({ institution: "", degree: "", dates: "", location: "" });
   renderEducationEditors();
@@ -606,7 +615,7 @@ document.getElementById("addCertBtn").addEventListener("click", () => {
   saveCurrentData();
 });
 
-// Reset Button
+// Reset
 document.getElementById("resetBtn").addEventListener("click", () => {
   if (confirm("Reset all fields back to Paramasivan M's original resume?")) {
     localStorage.removeItem("paramasivan_resume_data");
@@ -616,13 +625,24 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   }
 });
 
-// Print Button
+// Print
 document.getElementById("printBtn").addEventListener("click", () => {
-  // If on mobile preview, print directly
   window.print();
 });
 
-// --- MOBILE SEGMENTED TABS (EDIT FORM VS VIEW RESUME) ---
+// --- TEMPLATE SWITCHER LISTENER ---
+const templateSelect = document.getElementById("templateSelect");
+const resumePaper = document.getElementById("resumePaper");
+
+if (templateSelect && resumePaper) {
+  templateSelect.addEventListener("change", (e) => {
+    const selected = e.target.value;
+    resumePaper.className = `resume-sheet ${selected}`;
+    localStorage.setItem("paramasivan_resume_template", selected);
+  });
+}
+
+// Mobile Tabs
 const tabEditorBtn = document.getElementById("tabEditorBtn");
 const tabPreviewBtn = document.getElementById("tabPreviewBtn");
 

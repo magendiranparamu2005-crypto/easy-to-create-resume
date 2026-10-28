@@ -1,4 +1,4 @@
-/* --- STRICT MONOCHROME (BLACK & WHITE) & FULLY RESPONSIVE --- */
+/* --- STRICT MONOCHROME (BLACK & WHITE), MULTI-TEMPLATE & FULLY RESPONSIVE --- */
 :root {
   --bg-app: #f2f2f2;
   --bg-editor: #ffffff;
@@ -6,7 +6,7 @@
   --white: #ffffff;
   --border-gray: #d4d4d4;
   --border-light: #e5e5e5;
-  --font-serif: "Times New Roman", Times, "Computer Modern", Georgia, serif;
+  --font-serif: "Times New Roman", Times, "Newsreader", "Computer Modern", Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -37,6 +37,7 @@ body {
   border-bottom: 1px solid var(--black);
   position: relative;
   z-index: 101;
+  gap: 12px;
 }
 
 .brand {
@@ -59,15 +60,36 @@ body {
   font-weight: 700;
 }
 
-.badge {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--white);
-  padding: 1px 5px;
-  border-radius: 2px;
-  margin-left: 4px;
+/* Template Picker in Header */
+.template-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.template-picker label {
+  font-size: 0.8rem;
+  color: #a3a3a3;
   font-weight: 600;
+  text-transform: uppercase;
+}
+
+.template-dropdown {
+  background: #171717;
+  color: var(--white);
+  border: 1px solid #404040;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.template-dropdown:focus {
+  border-color: var(--white);
 }
 
 .actions {
@@ -76,7 +98,7 @@ body {
   gap: 8px;
 }
 
-/* Header Buttons */
+/* Buttons */
 .btn {
   padding: 6px 14px;
   border-radius: 4px;
@@ -126,7 +148,7 @@ body {
   background: #333333;
 }
 
-/* --- MOBILE TAB NAVIGATION (VISIBLE ONLY ON MOBILE/TABLET <= 850px) --- */
+/* --- MOBILE TABS (SCREENS <= 850px) --- */
 .mobile-tabs {
   display: none;
   background: var(--black);
@@ -345,7 +367,7 @@ textarea {
   -webkit-overflow-scrolling: touch;
 }
 
-/* THE HARVARD / LATEX RESUME SHEET */
+/* BASE RESUME SHEET */
 .resume-sheet {
   background: var(--white);
   width: 100%;
@@ -353,19 +375,12 @@ textarea {
   min-height: 1060px;
   padding: 40px 50px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: var(--font-serif);
   color: var(--black);
   line-height: 1.25;
-}
-
-/* Header */
-.resume-header {
-  text-align: center;
-  margin-bottom: 12px;
+  transition: all 0.2s ease;
 }
 
 .candidate-name {
-  font-size: 26px;
   font-weight: bold;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
@@ -378,12 +393,12 @@ textarea {
   color: var(--black);
 }
 
-.resume-header a {
+.resume-sheet a {
   color: var(--black);
   text-decoration: none;
 }
 
-.resume-header a:hover {
+.resume-sheet a:hover {
   text-decoration: underline;
 }
 
@@ -392,16 +407,14 @@ textarea {
   color: var(--black);
 }
 
-/* Sections */
 .res-section {
   margin-top: 10px;
 }
 
 .res-sec-title {
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: bold;
   color: var(--black);
-  letter-spacing: 0.2px;
 }
 
 .res-divider {
@@ -412,7 +425,7 @@ textarea {
 }
 
 .summary-text {
-  font-size: 13.5px;
+  font-size: 13px;
   text-align: justify;
   line-height: 1.35;
   color: var(--black);
@@ -433,7 +446,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--black);
 }
 
@@ -448,12 +461,12 @@ textarea {
 
 .entry-subtitle-italic {
   font-style: italic;
-  font-size: 13px;
+  font-size: 12.5px;
 }
 
 .entry-location-italic {
   font-style: italic;
-  font-size: 13px;
+  font-size: 12.5px;
   white-space: nowrap;
 }
 
@@ -469,25 +482,24 @@ textarea {
 }
 
 .bullet-list li {
-  font-size: 13px;
+  font-size: 12.5px;
   text-align: justify;
   line-height: 1.32;
   margin-bottom: 2px;
   color: var(--black);
 }
 
-/* Technical Skills Table */
 .skills-table {
   display: flex;
   flex-direction: column;
   gap: 2.5px;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--black);
 }
 
 .skill-line {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 190px 1fr;
   align-items: baseline;
 }
 
@@ -495,27 +507,171 @@ textarea {
   font-weight: bold;
 }
 
-.skill-content {
-  font-weight: normal;
+/* =======================================================
+   TEMPLATE 1: CLASSIC HARVARD (LaTeX Academic)
+   ======================================================= */
+.resume-sheet.template-harvard {
+  font-family: var(--font-serif);
+}
+
+.template-harvard .resume-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.template-harvard .candidate-name {
+  font-size: 26px;
+}
+
+.template-harvard .resume-content-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-harvard .resume-col-side {
+  order: 1;
+}
+
+.template-harvard .resume-col-main {
+  order: 2;
 }
 
 /* =======================================================
-   MOBILE & TABLET RESPONSIVE STYLES (SCREEN <= 850px)
+   TEMPLATE 2: MODERN 2-COLUMN SIDEBAR
+   ======================================================= */
+.resume-sheet.template-modern {
+  font-family: var(--font-sans);
+}
+
+.template-modern .resume-header {
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.template-modern .candidate-name {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.template-modern .contact-line,
+.template-modern .links-line {
+  font-size: 12px;
+  color: #333333;
+}
+
+.template-modern .resume-content-layout {
+  display: grid;
+  grid-template-columns: 32% 68%;
+  gap: 24px;
+}
+
+.template-modern .resume-col-side {
+  border-right: 1px solid var(--border-gray);
+  padding-right: 18px;
+}
+
+.template-modern .resume-col-side .res-sec-title,
+.template-modern .resume-col-main .res-sec-title {
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-size: 13px;
+}
+
+.template-modern .skill-line {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.template-modern .entry-row {
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+/* =======================================================
+   TEMPLATE 3: SILICON VALLEY MINIMAL (Modern Tech Sans)
+   ======================================================= */
+.resume-sheet.template-minimal {
+  font-family: var(--font-sans);
+}
+
+.template-minimal .resume-header {
+  text-align: left;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--black);
+  padding-left: 14px;
+}
+
+.template-minimal .candidate-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.template-minimal .contact-line,
+.template-minimal .links-line {
+  font-size: 12.5px;
+}
+
+.template-minimal .resume-content-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-minimal .res-divider {
+  display: none;
+}
+
+.template-minimal .res-sec-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 3px solid var(--black);
+  padding-left: 8px;
+  margin-bottom: 8px;
+}
+
+.template-minimal .resume-col-side {
+  order: 1;
+}
+
+.template-minimal .resume-col-main {
+  order: 2;
+}
+
+/* =======================================================
+   MOBILE RESPONSIVENESS (SCREENS <= 850px)
    ======================================================= */
 @media screen and (max-width: 850px) {
-  /* Show mobile tab switcher */
+  .app-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .template-picker {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .template-dropdown {
+    flex: 1;
+  }
+
   .mobile-tabs {
     display: flex;
   }
 
-  /* Single column workspace */
   .workspace {
     display: block;
     height: auto;
     overflow: visible;
   }
 
-  /* Toggle between Editor and Preview based on active tab */
   body.mobile-show-editor .editor-pane {
     display: flex !important;
     width: 100%;
@@ -541,12 +697,10 @@ textarea {
     background: #ebebeb;
   }
 
-  /* Prevent iOS automatic zoom when tapping input */
   input, textarea {
     font-size: 16px !important;
   }
 
-  /* Responsive Input Grids */
   .input-grid {
     grid-template-columns: 1fr;
   }
@@ -555,7 +709,6 @@ textarea {
     grid-column: span 1;
   }
 
-  /* Responsive Resume Paper on Mobile */
   .resume-sheet {
     padding: 24px 16px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
@@ -578,12 +731,16 @@ textarea {
     margin: 0 3px;
   }
 
-  .summary-text {
-    font-size: 12.5px;
-    text-align: left;
+  .template-modern .resume-content-layout {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
   }
 
-  /* Wrap rows so dates and locations don't blow out mobile width */
+  .template-modern .resume-col-side {
+    border-right: none;
+    padding-right: 0;
+  }
+
   .entry-row {
     flex-wrap: wrap;
     gap: 2px;
@@ -593,11 +750,6 @@ textarea {
   .entry-meta-bold, .entry-location-italic {
     white-space: normal;
     font-size: 12px;
-  }
-
-  .skills-table {
-    gap: 6px;
-    font-size: 12.5px;
   }
 
   .skill-line {
@@ -614,26 +766,6 @@ textarea {
     font-size: 12px;
     text-align: left;
     line-height: 1.35;
-  }
-}
-
-/* Very Small Mobile Screens (<= 400px) */
-@media screen and (max-width: 400px) {
-  .app-bar {
-    padding: 8px 10px;
-  }
-
-  .brand h2 {
-    font-size: 0.95rem;
-  }
-
-  .btn {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-  }
-
-  .resume-sheet {
-    padding: 20px 12px;
   }
 }
 
@@ -688,11 +820,6 @@ textarea {
 
   .entry-meta-bold, .entry-location-italic {
     white-space: nowrap !important;
-  }
-
-  .skill-line {
-    display: grid !important;
-    grid-template-columns: 200px 1fr !important;
   }
 
   a {

@@ -3,136 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ResuCraft â€” Live Resume Builder</title>
+  <title>Paramasivan M — Interactive Resume Builder</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="theme-navy">
-  <!-- Top Application Bar -->
+<body>
+  <!-- Top Monochrome Bar -->
   <header class="app-bar no-print">
     <div class="brand">
-      <span class="logo-icon">ðŸ“„</span>
-      <h2>Resu<strong>Craft</strong></h2>
+      <span class="brand-icon">¦</span>
+      <h2>Resu<strong>Craft</strong> <span class="badge">Harvard B&amp;W</span></h2>
     </div>
-
     <div class="actions">
-      <!-- Theme Switcher -->
-      <div class="theme-selector">
-        <label>Theme:</label>
-        <button class="color-dot navy active" data-theme="theme-navy" title="Modern Navy"></button>
-        <button class="color-dot slate" data-theme="theme-slate" title="Executive Slate"></button>
-        <button class="color-dot emerald" data-theme="theme-emerald" title="Emerald Growth"></button>
-      </div>
-
-      <button id="loadSampleBtn" class="btn btn-secondary">Load Sample</button>
-      <button id="clearBtn" class="btn btn-outline">Clear</button>
+      <button id="resetBtn" class="btn btn-outline" title="Reset to Paramasivan M original resume">Reset to Original</button>
       <button id="printBtn" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-        Print / PDF
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        Print / Download PDF
       </button>
     </div>
   </header>
 
+  <!-- Split Screen Workspace -->
   <div class="workspace">
-    <!-- LEFT PANE: Form Editor -->
+    <!-- LEFT: Form Editor -->
     <aside class="editor-pane no-print">
-      <!-- Personal Info -->
+      <!-- Personal Details -->
       <section class="form-section">
-        <h3>Personal Details</h3>
+        <h3>Contact &amp; Personal Info</h3>
         <div class="input-grid">
-          <input type="text" id="inFullName" placeholder="Full Name">
-          <input type="text" id="inTitle" placeholder="Professional Title (e.g. Full Stack Developer)">
-          <input type="email" id="inEmail" placeholder="Email Address">
-          <input type="text" id="inPhone" placeholder="Phone Number">
-          <input type="text" id="inLocation" placeholder="Location (e.g. New York, USA)">
-          <input type="text" id="inWebsite" placeholder="GitHub / Portfolio URL">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="inName">
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="text" id="inPhone">
+          </div>
+          <div class="field full">
+            <label>Email Address</label>
+            <input type="email" id="inEmail">
+          </div>
+          <div class="field full">
+            <label>LinkedIn Profile URL</label>
+            <input type="text" id="inLinkedin">
+          </div>
+          <div class="field full">
+            <label>GitHub Profile / Portfolio URL</label>
+            <input type="text" id="inGithub">
+          </div>
         </div>
-        <textarea id="inSummary" rows="3" placeholder="Brief professional summary about your expertise and goals..."></textarea>
       </section>
 
-      <!-- Work Experience -->
+      <!-- Profile Summary -->
       <section class="form-section">
-        <div class="section-header">
-          <h3>Work Experience</h3>
-          <button id="addExpBtn" class="btn btn-sm">+ Add Job</button>
-        </div>
-        <div id="experienceContainer" class="dynamic-group"></div>
+        <h3>Profile Summary</h3>
+        <textarea id="inSummary" rows="4"></textarea>
       </section>
 
       <!-- Education -->
       <section class="form-section">
-        <div class="section-header">
+        <div class="section-title-row">
           <h3>Education</h3>
-          <button id="addEduBtn" class="btn btn-sm">+ Add Education</button>
+          <button id="addEduBtn" class="btn-sm">+ Add Education</button>
         </div>
-        <div id="educationContainer" class="dynamic-group"></div>
+        <div id="eduEditorContainer" class="dynamic-editor-group"></div>
       </section>
 
-      <!-- Skills -->
+      <!-- Technical Skills -->
       <section class="form-section">
-        <h3>Skills</h3>
-        <div class="skills-input-wrapper">
-          <input type="text" id="inSkill" placeholder="Type a skill and press Enter (e.g. JavaScript)">
-          <button id="addSkillBtn" class="btn btn-sm">Add</button>
+        <h3>Technical Skills</h3>
+        <div class="skills-editor-fields">
+          <div class="field full">
+            <label>Languages</label>
+            <input type="text" id="inSkillLanguages">
+          </div>
+          <div class="field full">
+            <label>Frontend Technologies</label>
+            <input type="text" id="inSkillFrontend">
+          </div>
+          <div class="field full">
+            <label>Developer Tools</label>
+            <input type="text" id="inSkillTools">
+          </div>
+          <div class="field full">
+            <label>Technologies / Others</label>
+            <input type="text" id="inSkillOthers">
+          </div>
         </div>
-        <div id="skillsTagContainer" class="tags-container"></div>
+      </section>
+
+      <!-- Experience -->
+      <section class="form-section">
+        <div class="section-title-row">
+          <h3>Experience</h3>
+          <button id="addExpBtn" class="btn-sm">+ Add Job</button>
+        </div>
+        <div id="expEditorContainer" class="dynamic-editor-group"></div>
       </section>
 
       <!-- Projects -->
       <section class="form-section">
-        <div class="section-header">
+        <div class="section-title-row">
           <h3>Projects</h3>
-          <button id="addProjBtn" class="btn btn-sm">+ Add Project</button>
+          <button id="addProjBtn" class="btn-sm">+ Add Project</button>
         </div>
-        <div id="projectContainer" class="dynamic-group"></div>
+        <div id="projEditorContainer" class="dynamic-editor-group"></div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="form-section">
+        <div class="section-title-row">
+          <h3>Certifications</h3>
+          <button id="addCertBtn" class="btn-sm">+ Add Certification</button>
+        </div>
+        <div id="certEditorContainer" class="dynamic-editor-group"></div>
       </section>
     </aside>
 
-    <!-- RIGHT PANE: Live A4 Preview Paper -->
+    <!-- RIGHT: Live Document Preview (Exact B&W LaTeX Format) -->
     <main class="preview-pane">
-      <div class="resume-paper" id="resumePaper">
-        <!-- Header -->
+      <div class="resume-sheet" id="resumePaper">
+        <!-- HEADER -->
         <header class="resume-header">
-          <h1 id="outFullName">Your Name</h1>
-          <h2 id="outTitle">Professional Title</h2>
-          <div class="resume-contact" id="outContact">
-            <span id="outEmail">email@example.com</span>
-            <span id="outPhone">+1 234 567 890</span>
-            <span id="outLocation">City, Country</span>
-            <span id="outWebsite">github.com/profile</span>
+          <h1 class="candidate-name" id="outName">Paramasivan M</h1>
+          <div class="contact-line">
+            <a id="outPhoneLink" href="tel:+916374914414"><span id="outPhone">+91 6374914414</span></a>
+            <span class="sep">—</span>
+            <a id="outEmailLink" href="mailto:magendiranparamu2005@gmail.com"><span id="outEmail">magendiranparamu2005@gmail.com</span></a>
+          </div>
+          <div class="links-line">
+            <a id="outLinkedin" href="https://linkedin.com/in/paramasivan" target="_blank" rel="noopener">linkedin.com/in/paramasivan</a>
+            <span class="sep">—</span>
+            <a id="outGithub" href="https://github.com/magendiranparamu2005-crypto/portfolio" target="_blank" rel="noopener">https://github.com/magendiranparamu2005-crypto/portfolio</a>
           </div>
         </header>
 
-        <!-- Summary -->
-        <section class="resume-block" id="blockSummary">
-          <h3 class="block-title">Professional Summary</h3>
-          <p id="outSummary" class="block-content">Summary goes here...</p>
+        <!-- PROFILE SUMMARY -->
+        <section class="res-section" id="secSummary">
+          <h2 class="res-sec-title">Profile Summary</h2>
+          <hr class="res-divider">
+          <p class="summary-text" id="outSummary"></p>
         </section>
 
-        <!-- Experience -->
-        <section class="resume-block" id="blockExperience">
-          <h3 class="block-title">Experience</h3>
-          <div id="outExperience" class="items-list"></div>
+        <!-- EDUCATION -->
+        <section class="res-section" id="secEducation">
+          <h2 class="res-sec-title">Education</h2>
+          <hr class="res-divider">
+          <div id="outEducationList" class="entries-group"></div>
         </section>
 
-        <!-- Projects -->
-        <section class="resume-block" id="blockProjects">
-          <h3 class="block-title">Key Projects</h3>
-          <div id="outProjects" class="items-list"></div>
+        <!-- TECHNICAL SKILLS -->
+        <section class="res-section" id="secSkills">
+          <h2 class="res-sec-title">Technical Skills</h2>
+          <hr class="res-divider">
+          <div class="skills-table">
+            <div class="skill-line">
+              <strong class="skill-name">Languages:</strong>
+              <span id="outSkillLanguages" class="skill-content"></span>
+            </div>
+            <div class="skill-line">
+              <strong class="skill-name">Frontend Technologies:</strong>
+              <span id="outSkillFrontend" class="skill-content"></span>
+            </div>
+            <div class="skill-line">
+              <strong class="skill-name">Developer Tools:</strong>
+              <span id="outSkillTools" class="skill-content"></span>
+            </div>
+            <div class="skill-line">
+              <strong class="skill-name">Technologies/Others:</strong>
+              <span id="outSkillOthers" class="skill-content"></span>
+            </div>
+          </div>
         </section>
 
-        <!-- Education -->
-        <section class="resume-block" id="blockEducation">
-          <h3 class="block-title">Education</h3>
-          <div id="outEducation" class="items-list"></div>
+        <!-- EXPERIENCE -->
+        <section class="res-section" id="secExperience">
+          <h2 class="res-sec-title">Experience</h2>
+          <hr class="res-divider">
+          <div id="outExperienceList" class="entries-group"></div>
         </section>
 
-        <!-- Skills -->
-        <section class="resume-block" id="blockSkills">
-          <h3 class="block-title">Technical Skills</h3>
-          <div id="outSkills" class="resume-skills-list"></div>
+        <!-- PROJECTS -->
+        <section class="res-section" id="secProjects">
+          <h2 class="res-sec-title">Projects</h2>
+          <hr class="res-divider">
+          <div id="outProjectsList" class="entries-group"></div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="res-section" id="secCertifications">
+          <h2 class="res-sec-title">Certifications</h2>
+          <hr class="res-divider">
+          <div id="outCertificationsList" class="entries-group"></div>
         </section>
       </div>
     </main>

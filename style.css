@@ -1,4 +1,4 @@
-/* --- STRICT MONOCHROME (BLACK & WHITE), MULTI-TEMPLATE & FULLY RESPONSIVE --- */
+/* --- STRICT MONOCHROME (BLACK & WHITE), 6 TEMPLATES & FULLY RESPONSIVE --- */
 :root {
   --bg-app: #f2f2f2;
   --bg-editor: #ffffff;
@@ -8,6 +8,7 @@
   --border-light: #e5e5e5;
   --font-serif: "Times New Roman", Times, "Newsreader", "Computer Modern", Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
 }
 
 * {
@@ -643,6 +644,193 @@ textarea {
 }
 
 /* =======================================================
+   TEMPLATE 4: EXECUTIVE HEADER (Corporate Classic)
+   ======================================================= */
+.resume-sheet.template-executive {
+  font-family: var(--font-serif);
+  padding-top: 0;
+}
+
+.template-executive .resume-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 32px 40px 24px;
+  margin: 0 -50px 20px;
+  text-align: center;
+}
+
+.template-executive .candidate-name {
+  color: var(--white);
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.template-executive .contact-line,
+.template-executive .links-line {
+  color: #e5e5e5;
+  font-size: 12.5px;
+}
+
+.template-executive .resume-header a {
+  color: #ffffff;
+}
+
+.template-executive .sep {
+  color: #888888;
+}
+
+.template-executive .res-sec-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.template-executive .res-divider {
+  border-top: 2px solid var(--black);
+}
+
+.template-executive .resume-content-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-executive .resume-col-side {
+  order: 1;
+}
+
+.template-executive .resume-col-main {
+  order: 2;
+}
+
+/* =======================================================
+   TEMPLATE 5: TECH ONE-PAGER (Compact Grid)
+   ======================================================= */
+.resume-sheet.template-compact {
+  font-family: var(--font-sans);
+  padding: 30px 38px;
+}
+
+.template-compact .resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.template-compact .candidate-name {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.template-compact .contact-line,
+.template-compact .links-line {
+  font-size: 11.5px;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.template-compact .res-sec-title {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.template-compact .res-divider {
+  display: none;
+}
+
+.template-compact .resume-content-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-compact .resume-col-side {
+  order: 1;
+}
+
+.template-compact .resume-col-main {
+  order: 2;
+}
+
+.template-compact .entry-row {
+  font-size: 12px;
+}
+
+.template-compact .bullet-list li {
+  font-size: 12px;
+  line-height: 1.28;
+}
+
+/* =======================================================
+   TEMPLATE 6: MODERN EDITORIAL (Timeline Style)
+   ======================================================= */
+.resume-sheet.template-creative {
+  font-family: var(--font-display);
+}
+
+.template-creative .resume-header {
+  border-bottom: 3px solid var(--black);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.template-creative .candidate-name {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.template-creative .contact-line,
+.template-creative .links-line {
+  font-size: 12.5px;
+  color: #404040;
+}
+
+.template-creative .res-sec-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.template-creative .res-divider {
+  border-top: 1px dashed var(--black);
+}
+
+.template-creative .res-entry {
+  position: relative;
+  border-left: 2px solid var(--black);
+  padding-left: 14px;
+  margin-left: 6px;
+  margin-bottom: 10px;
+}
+
+.template-creative .resume-content-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-creative .resume-col-side {
+  order: 1;
+}
+
+.template-creative .resume-col-main {
+  order: 2;
+}
+
+/* =======================================================
    MOBILE RESPONSIVENESS (SCREENS <= 850px)
    ======================================================= */
 @media screen and (max-width: 850px) {
@@ -717,8 +905,24 @@ textarea {
     max-width: 100%;
   }
 
+  .template-executive .resume-header {
+    margin: -24px -16px 16px;
+    padding: 20px 16px 16px;
+  }
+
+  .template-compact .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .template-compact .contact-line,
+  .template-compact .links-line {
+    text-align: left;
+  }
+
   .candidate-name {
-    font-size: 22px;
+    font-size: 22px !important;
   }
 
   .contact-line, .links-line {
@@ -812,6 +1016,11 @@ textarea {
     width: 100% !important;
     min-height: auto !important;
     page-break-after: avoid;
+  }
+
+  .template-executive .resume-header {
+    margin: 0 0 16px 0 !important;
+    padding: 24px 20px 16px !important;
   }
 
   .entry-row {

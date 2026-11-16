@@ -1,23 +1,25 @@
-// --- PARAMASIVAN M DEFAULT RESUME DATA ---
+// --- SHIVA MJ DEFAULT RESUME DATA ---
 const DEFAULT_RESUME = {
-  name: "Paramasivan M",
-  phone: "+91 6374914414",
-  email: "magendiranparamu2005@gmail.com",
-  linkedin: "https://linkedin.com/in/paramasivan",
-  linkedinDisplay: "linkedin.com/in/paramasivan",
-  github: "https://github.com/magendiranparamu2005-crypto/portfolio",
+  name: "shiva mj",
+  phone: "6473826464",
+  email: "wht isuremai@gamil.com",
+  linkedin: "https://linkedin.com/in/shivamj",
+  linkedinDisplay: "linkedin.com/in/shivamj",
+  github: "https://github.com/magendiranshiva2005-crypto/portfolio",
+
   summary: "Computer Science graduate with strong knowledge of Python, Java, SQL, HTML, CSS, JavaScript, and React.js. Experienced in developing Python programs, responsive web applications, and REST-based projects. Familiar with OOP, Git, MySQL, and problem-solving, Looking an entry-level Software Developer role.",
+
   education: [
     {
       institution: "Annai Teresa College of Engineering",
-      degree: "Bachelor of Engineering in Computer Science – 7.6 CGPA",
-      dates: "Nov 2022 – May 2026",
+      degree: "Bachelor of Engineering in Computer Science  7.CG8PA",
+      dates: "Nov 2022  May 2026",
       location: "Cuddalore, Tamil Nadu"
     },
     {
       institution: "DGM Hr. SEC. School",
-      degree: "SSLC – 96.6% & HSC – 64.0%",
-      dates: "Jun 2020 – May 2022",
+      degree: "SSLC  96.6% & HSC  64.0%",
+      dates: "Jun 2020  May 2022",
       location: "Cuddalore, Tamil Nadu"
     }
   ],
@@ -31,7 +33,7 @@ const DEFAULT_RESUME = {
     {
       company: "VEI Technologies Pvt. Ltd.",
       role: "Python Intern",
-      dates: "Aug 2025 – Sep 2025",
+      dates: "Aug 2025  Sep 2025",
       location: "Chennai",
       bullets: [
         "Completed a Python internship at VEI Technologies Pvt. Ltd., developing 15+ Python programs using Core Python, functions, loops, conditional statements, and modules.",
@@ -45,7 +47,7 @@ const DEFAULT_RESUME = {
     {
       title: "AI-Based Student Performance Monitoring System",
       tech: "Python, Flask, Machine Learning",
-      dates: "Mar 2026 – May 2026",
+      dates: "Mar 2026  May 2026",
       bullets: [
         "Developed an AI-based student performance monitoring system using Python, Flask, and Machine Learning to predict academic risk based on attendance, CGPA, quiz scores, and behavioral data.",
         "Implemented Random Forest, Decision Tree, Logistic Regression, and XGBoost models to classify students into Low, Medium, and High risk categories and improve prediction accuracy.",
@@ -64,22 +66,22 @@ const DEFAULT_RESUME = {
   ],
   certifications: [
     {
-      title: "Java Programming – SimpliLearn",
-      dates: "June – July 2026",
+      title: "Java Programming SimpliLearn",
+      dates: "June  July 2026",
       bullets: [
         "Completed a Java course covering loops, functions, and object-oriented programming (OOP), with hands-on experience developing efficient and scalable applications."
       ]
     },
     {
-      title: "Web Technologies – SimpliLearn",
+      title: "Web Technologies  SimpliLearn",
       dates: "July 2026",
       bullets: [
         "Accomplished a course in HTML, CSS and JavaScript focused on building responsive web pages, structuring content, and applying modern styling techniques grounded in strong design principles."
       ]
     },
     {
-      title: "Structured Query Language (SQL) – SkillUp",
-      dates: "June – July 2026",
+      title: "Structured Query Language (SQL) SkillUp",
+      dates: "June  July 2026",
       bullets: [
         "Completed a SQL course covering database design, DDL, DML, Joins, Views, Functions, and Stored Procedures. Developed practical skills in querying, manipulating, and optimizing relational databases using SQL."
       ]
@@ -92,17 +94,23 @@ let currentResume = JSON.parse(JSON.stringify(DEFAULT_RESUME));
 
 // Load from LocalStorage
 function loadSavedData() {
-  const saved = localStorage.getItem("paramasivan_resume_data");
+  const saved = localStorage.getItem("shiva_mj_resume_data");
   if (saved) {
     try {
       currentResume = JSON.parse(saved);
+      if (currentResume.phone === "+91 6374914414") {
+        currentResume.phone = DEFAULT_RESUME.phone;
+      }
+      if (currentResume.email === "magendiranshiva2005@gmail.com") {
+        currentResume.email = DEFAULT_RESUME.email;
+      }
     } catch (e) {
       console.error("Could not parse saved resume data, using default", e);
     }
   }
 
   // Load Saved Template
-  const savedTemplate = localStorage.getItem("paramasivan_resume_template") || "template-harvard";
+  const savedTemplate = localStorage.getItem("shiva_mj_resume_template") || "template-harvard";
   const templateSelect = document.getElementById("templateSelect");
   const resumePaper = document.getElementById("resumePaper");
   if (templateSelect && resumePaper) {
@@ -112,7 +120,7 @@ function loadSavedData() {
 }
 
 function saveCurrentData() {
-  localStorage.setItem("paramasivan_resume_data", JSON.stringify(currentResume));
+  localStorage.setItem("shiva_mj_resume_data", JSON.stringify(currentResume));
 }
 
 // --- RENDER PREVIEW (RIGHT PANE) ---
@@ -189,7 +197,7 @@ function renderPreview() {
     const bulletsHtml = proj.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("");
     el.innerHTML = `
       <div class="entry-row">
-        <span class="entry-title-bold">${escapeHtml(proj.title)} <span class="proj-tech-sub">— ${escapeHtml(proj.tech)}</span></span>
+        <span class="entry-title-bold">${escapeHtml(proj.title)} <span class="proj-tech-sub">ï¿½ ${escapeHtml(proj.tech)}</span></span>
         <span class="entry-meta-bold">${escapeHtml(proj.dates)}</span>
       </div>
       <ul class="bullet-list">${bulletsHtml}</ul>
@@ -393,7 +401,7 @@ function renderProjectEditors() {
       <button class="card-remove-btn" title="Remove">&times;</button>
       <input type="text" class="proj-title" placeholder="Project Title" value="${escapeHtml(proj.title)}">
       <input type="text" class="proj-tech" placeholder="Technologies (e.g. Python, Flask, ML)" value="${escapeHtml(proj.tech)}">
-      <input type="text" class="proj-dates" placeholder="Dates (e.g. Mar 2026 – May 2026)" value="${escapeHtml(proj.dates)}">
+      <input type="text" class="proj-dates" placeholder="Dates (e.g. Mar 2026 ï¿½ May 2026)" value="${escapeHtml(proj.dates)}">
       <div class="bullets-group">
         <div class="bullet-label-row">
           <span>Bullet Points</span>
@@ -473,7 +481,7 @@ function renderCertificationEditors() {
 
     card.innerHTML = `
       <button class="card-remove-btn" title="Remove">&times;</button>
-      <input type="text" class="cert-title" placeholder="Certification Title – Issuer" value="${escapeHtml(cert.title)}">
+      <input type="text" class="cert-title" placeholder="Certification Title ï¿½ Issuer" value="${escapeHtml(cert.title)}">
       <input type="text" class="cert-dates" placeholder="Dates" value="${escapeHtml(cert.dates)}">
       <div class="bullets-group">
         <div class="bullet-label-row">
@@ -617,8 +625,8 @@ document.getElementById("addCertBtn").addEventListener("click", () => {
 
 // Reset
 document.getElementById("resetBtn").addEventListener("click", () => {
-  if (confirm("Reset all fields back to Paramasivan M's original resume?")) {
-    localStorage.removeItem("paramasivan_resume_data");
+  if (confirm("Reset all fields back to shiva mj's original resume?")) {
+    localStorage.removeItem("shiva_mj_resume_data");
     currentResume = JSON.parse(JSON.stringify(DEFAULT_RESUME));
     populateForm();
     renderPreview();
@@ -638,7 +646,7 @@ if (templateSelect && resumePaper) {
   templateSelect.addEventListener("change", (e) => {
     const selected = e.target.value;
     resumePaper.className = `resume-sheet ${selected}`;
-    localStorage.setItem("paramasivan_resume_template", selected);
+    localStorage.setItem("shiva_mj_resume_template", selected);
   });
 }
 
